@@ -8,6 +8,31 @@ The project also serves as a practical environment for studying modern backend, 
 
 Architecture version 0.2 is approved. Application implementation has not started.
 
+## MVP scope
+
+The MVP will be a single-user web application that supports:
+
+- uploading one TXT, Markdown, PDF, or DOCX file per request;
+- storing original files in a local filesystem;
+- indexing documents asynchronously;
+- viewing documents and their indexing status;
+- downloading and deleting documents;
+- performing semantic search over indexed content;
+- generating answers grounded in retrieved chunks;
+- returning citations with the source document and its format-specific location.
+
+## Out of scope for MVP
+
+- authentication and authorization;
+- multitenancy;
+- document versioning;
+- OCR;
+- chat history;
+- WebSocket progress and answer streaming;
+- hybrid search and reranking;
+- external integrations;
+- MinIO or another object storage service.
+
 ## Target stack
 
 - Frontend: React and TypeScript
