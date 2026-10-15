@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/doc-mind-soft/doc-mind/backend/internal/config"
+	"github.com/doc-mind-soft/doc-mind/backend/internal/httpapi"
 )
 
 const (
@@ -19,17 +20,17 @@ const (
 func main() {
 	cfg := config.Load()
 
-	handler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
+	logHandler := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
 		Level: slog.LevelInfo,
 	})
-	logger := slog.New(handler)
+	logger := slog.New(logHandler)
 	slog.SetDefault(logger)
 
-	mux := http.NewServeMux()
+	httpHandler := httpapi.NewHandler()
 
 	server := &http.Server{
 		Addr:              cfg.HTTPAddr,
-		Handler:           mux,
+		Handler:           httpHandler,
 		ReadHeaderTimeout: readHeaderTimeout,
 		ReadTimeout:       readTimeout,
 		WriteTimeout:      writeTimeout,
